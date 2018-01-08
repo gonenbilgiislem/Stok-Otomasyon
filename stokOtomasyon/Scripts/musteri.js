@@ -17,25 +17,30 @@ function Musteriler() {
 }
 
 //Müşteri ekle
-$("#veri").on("submit", function (event) {
+$("#veri").on("submit", function (event)
+{
     event.preventDefault();
-    $.ajax({
-        type: "POST",
-        url: '/Musteri/Ekle',
-        data: $(this).serialize(),
-        dataType: "json",
-        success: function (gelenDeg) {
-            if (gelenDeg == "1") {
-                swal("Eklendi", "Müşteri Başarıyla Eklendi!", "success");
-                setTimeout('yonlendir()', 3000)
-            }
-            if (gelenDeg == "0")
+    $.ajax(
+        {
+            type: "POST",
+            url: '/Musteri/Ekle',
+            data: $(this).serialize(),
+            dataType: "json",
+            success: function (gelenDeg)
+            {
+                if (gelenDeg == "1") {
+                    swal("Eklendi", "Müşteri Başarıyla Eklendi!", "success");
+                    setTimeout('yonlendir()', 3000)
+                }
+                else if (gelenDeg == "0") {
+                    swal("Hata", "Müşteri Eklenirken Hata Oluştu!", "error");
+                }
+            },
+            error: function ()
+            {
                 swal("Hata", "Müşteri Eklenirken Hata Oluştu!", "error");
-        },
-        error: function () {
-            swal("Hata", "Müşteri Eklenirken Hata Oluştu!", "error");
-        }
-    });
+            }
+        });
 });
 
 //Müşteri sayfasına yönlendir
@@ -44,7 +49,8 @@ function yonlendir() {
 }
 
 //Müşteri sil
-$("#sil").click(function () {
+$("#sil").click(function ()
+{
     var data = [];
     var sayac = 0;
     $("input[name='secili']:checked").each(function () {
@@ -60,21 +66,26 @@ $("#sil").click(function () {
         cancelButtonColor: '#d33',
         confirmButtonText: 'Sil'
     }).then(function () {
-        $.ajax({
+        $.ajax(
+            {
             type: "POST",
             url: '/Musteri/Sil',
             data: { data },
             dataType: "json",
-            success: function (gelenDeg) {
-                if (gelenDeg == "1") {
+            success: function (gelenDeg)
+            {
+                if (gelenDeg == "1")
+                {
                     swal("Silindi", "Silme işlemi başarıyla gerçekleşti!", "success");
                     Musteriler();
                 }
-                else if (gelenDeg == "2") {
+                else if (gelenDeg == "2")
+                {
                     swal("Hata!", "Silinecek birşey bulunamadı!", "error");
                 }
             },
-            error: function () {
+            error: function ()
+            {
                 swal("Hata!", "Müşteri Silinirken hata oluştu!", "error");
             }
         });
@@ -98,7 +109,7 @@ $(document).on("click", "#btn_Guncelle", function () {
     //});
 
     $.ajax({
-        type : 'POST',
+        type: 'POST',
         url: '/Musteri/Guncelle',
         data: deger,
         dataType: "json",
@@ -139,8 +150,8 @@ $(document).on("click", "#btn_Guncelle", function () {
                 }
             })
         },
-        error: function (r,rr,rrr) {
-            swal("Hata!", ""+rrr+"!", "error");
+        error: function (r, rr, rrr) {
+            swal("Hata!", "" + rrr + "!", "error");
         }
     });
 });

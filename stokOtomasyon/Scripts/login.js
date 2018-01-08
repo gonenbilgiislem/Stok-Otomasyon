@@ -14,9 +14,9 @@
         dataType: "json",
         contentType: "application/json;charset=utf-8",
         success: function (gelenDeg) {
-            if (gelenDeg == "1")
+            if (gelenDeg === "1")
                 window.location.href = '/Musteri/Index';
-            else if (gelenDeg == "0") 
+            else if (gelenDeg === "0") 
             swal("Başarısız!", "Giriş Başarısız oldu!", "error");
         },
         error: function () {

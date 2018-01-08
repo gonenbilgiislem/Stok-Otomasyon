@@ -24,13 +24,13 @@ namespace stokOtomasyon.Controllers
                 Result = (from obj in DB.Musteri
                           select new
                           {
-                              ID = obj.ID,
-                              Borc = obj.Borc,
-                              Ad = obj.Ad,
-                              Soyad = obj.Soyad,
-                              Tel = obj.Tel,
-                              Adres = obj.Adres,
-                              KayitTarihi = obj.KayitTarihi
+                              obj.ID,
+                              obj.Borc,
+                              obj.Ad,
+                              obj.Soyad,
+                              obj.Tel,
+                              obj.Adres,
+                              obj.KayitTarihi
 
                           })
             }, JsonRequestBehavior.AllowGet);
@@ -63,20 +63,20 @@ namespace stokOtomasyon.Controllers
                 var Result = (from obj in DB.Musteri.Where(x => x.ID == id)
                               select new
                               {
-                                  ID = obj.ID,
-                                  Borc = obj.Borc,
-                                  Ad = obj.Ad,
-                                  Soyad = obj.Soyad,
-                                  Tel = obj.Tel,
-                                  Adres = obj.Adres,
-                                  KayitTarihi = obj.KayitTarihi
+                                  obj.ID,
+                                  obj.Borc,
+                                  obj.Ad,
+                                  obj.Soyad,
+                                  obj.Tel,
+                                  obj.Adres,
+                                  obj.KayitTarihi
 
                               }).FirstOrDefault();
            
                 
                 return Json(Result);
             }
-            catch(Exception ex) { return Json("0"); }
+            catch(Exception) { return Json("0"); }
         }
 
         [HttpPost]
