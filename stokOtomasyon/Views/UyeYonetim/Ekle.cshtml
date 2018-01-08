@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Üye Yönetimi";
+}
+@using stokOtomasyon.Models
+@model List<Personel>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-info">
+            <div class="panel-wrapper collapse in" aria-expanded="true">
+                <div class="panel-body">
+                    <form id="veri" method="post">
+                        <div class="form-body">
+                            <h3 class="box-title">Personel Hesabı Oluştur</h3>
+                            <hr>
+                            <div class="row">
+                                    <div class="form-group">
+                                        <label class="control-label">Ad Soyad</label>
+                                        <select name="PersonelID" class="form-control select2">
+                                            <option>Personel Seçiniz</option>
+                                            @foreach (var prsnl in Model)
+                                            {
+                                                <option value="@prsnl.ID">@prsnl.Ad @prsnl.Soyad</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">Kullanıcı Ad</label>
+                                        <input type="email" name="KullaniciAd" class="form-control" placeholder="Kullanıcı Adını Giriniz">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">Şifre</label>
+                                        <input type="password" name="Sifre" class="form-control" placeholder="Şifre Giriniz">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">Şifre Tekrar</label>
+                                        <input type="password" name="SifreTekrar" class="form-control" placeholder="Şifreyi Tekrar Giriniz">
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Oluştur</button>
+                            <a href="@Url.Action("Index","UyeYonetim")" class="btn btn-default">İptal</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/mask.js"></script>
+    <script src="~/Scripts/uyeYonetim.js"></script>
+}

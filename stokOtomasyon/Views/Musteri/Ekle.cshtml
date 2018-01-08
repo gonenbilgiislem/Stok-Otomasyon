@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Müşteri Ekle";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-info">
+            <div class="panel-wrapper collapse in" aria-expanded="true">
+                <div class="panel-body">
+                    <form id="veri" method="post">
+                        <div class="form-body">
+                            <h3 class="box-title">Müşteri Ekle</h3>
+                            <hr>
+                            <div class="form-group">
+                                <label class="control-label">Ad</label>
+                                <input type="text" name="Ad" class="form-control" placeholder="Müşterinin Adını Giriniz">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Soyad</label>
+                                <input type="text" name="Soyad" class="form-control" placeholder="Müşterinin Soyadını Giriniz">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Telefon</label>
+                                <input type="number" name="Tel" class="form-control" placeholder="(999) 999-9999">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Adres</label>
+                                <input type="text" name="Adres" class="form-control" placeholder="Müşterinin Adresini Giriniz">
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Kaydet</button>
+                            <a href="@Url.Action("Index","Musteri")" class="btn btn-default">İptal</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+<script src="~/Scripts/mask.js"></script>
+<script src="~/Scripts/musteri.js"></script>
+}

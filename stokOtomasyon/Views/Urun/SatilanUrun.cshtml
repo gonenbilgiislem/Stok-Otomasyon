@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Satılan Ürünler";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="white-box">
+            <h3 class="box-title m-b-0">Satılan Ürünler</h3>
+            <p class="text-muted m-b-30">
+            </p>
+            <div class="table-responsive">
+                <table id="satilmis">
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <link href="~/Content/Css/duzenlenen.css" rel="stylesheet" />
+    <script src="~/Scripts/urun.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            Satilanlar();
+        });
+    </script>
+
+    <style>
+        th {
+            color: #fff !important;
+            background-color: #03a9f3 !important;
+        }
+
+        th, td {
+            padding: 7px !important;
+            font-weight: bold !important;
+            text-align: center !important;
+        }
+    </style>
+}

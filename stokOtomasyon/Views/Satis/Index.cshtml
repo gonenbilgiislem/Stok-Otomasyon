@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewBag.Title = "Satış Yap";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="white-box">
+            <h3 class="box-title m-b-0">Satış Yap</h3>
+                <div class="row" style="margin-top:30px !important;">
+                    <div class="col-lg-2">
+                        <select name="markaSec" class="form-control" style="background-color:#e4e7ea">
+                            <option>Marka Seçin</option>
+                            @foreach (var marka in ViewBag.Marka)
+                            {
+                                <option value="@marka.ID">@marka.Ad</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Ürün Adı Ara">
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <select id="musSec" class="form-control" style="background-color:#e4e7ea">
+                            <option value="-1">Müşteri Seçin</option>
+                            @foreach (var mus in ViewBag.Musteri)
+                            {
+                                <option value="@mus.ID">@mus.Ad @mus.Soyad</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-lg-2">
+                        <button id="iptal" class="btn btn-block btn-danger">Satış İptal</button>
+                    </div>
+                </div>
+            <div class="table-responsive kaydirma">
+                <table id="tablo"></table>
+            </div>
+            <div class="row" style="margin-top:30px">
+                <div class="col-lg-8">
+                    <table id="siparis">
+                        <thead><tr><th>Kaldır</th><th>Ürün Adı</th><th>Fiyat</th><th>Miktar</th><th>Toplam Tutar</th></tr></thead>
+                        <tbody></tbody>
+                    </table>
+                    <div class="col-lg-5 col-sm-4" style="float:right;">
+                        <div class="panel">
+                            <div class="panel-heading" style="text-align:right !important;">
+                                <span id="maxTutar">Toplam Tutar : 0 TL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-3" style="text-align:center">
+                    <button id="indirimYap" value="0" class="btn btn-default waves-effect waves-light" type="button">
+                        <span class="btn-label"><i class="fa fa-check"></i></span>
+                        İndirim Uygula
+                    </button>
+                    <span style="margin-top:15px; display:block; text-align:center; height:40px; line-height:40px; border-top: 3px solid #e4e7ea; border-bottom: 1px solid #e4e7ea" class="box-title">Satış Türünü Seçiniz</span>
+                    <button id="nakitSatis" class="btn btn-success waves-effect waves-light" type="button">
+                        <span class="btn-label"><i class="fa fa-check"></i></span>
+                        Nakit
+                    </button>
+                    <button id="veresiyeSatis" class="btn btn-success waves-effect waves-light" type="button">
+                        <span class="btn-label"><i class="fa fa-check"></i></span>
+                        Veresiye
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <link href="~/Content/Css/duzenlenen.css" rel="stylesheet" />
+    <style>
+        th, td {
+            padding: 7px !important;
+            font-weight:bold !important;
+            text-align:center !important;
+        }
+        th {
+            color: #fff !important;
+            background-color: #03a9f3 !important;
+        }
+        .kaydirma{
+            max-height:200px;
+            overflow:auto;
+        }
+    </style>
+    <script src="~/Scripts/satis.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            Urunler();
+        });
+    </script>
+}
+

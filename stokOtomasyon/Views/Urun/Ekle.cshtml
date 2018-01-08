@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "Ürün Ekle";
+}
+@using stokOtomasyon.Models
+@model List<Marka>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-info">
+            <div class="panel-wrapper collapse in" aria-expanded="true">
+                <div class="panel-body">
+                    <form id="veri" method="post">
+                        <div class="form-body">
+                            <h3 class="box-title">Ürün Ekle</h3>
+                            <hr>
+                            <div class="form-group">
+                                <label class="control-label">Marka</label>
+                                <select name="MarkaID" class="form-control select2">
+                                    <option>Marka Seçiniz</option>
+                                    @foreach (var marka in Model)
+                                    {
+                                        <option value="@marka.ID">@marka.Ad</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Ad</label>
+                                <input type="text" name="Ad" class="form-control" placeholder="Ürünlerinin Adını Giriniz" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Adet</label>
+                                <input type="number" name="Adet" class="form-control" placeholder="Ürün Adetini Giriniz" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Alış Fiyatı</label>
+                                <input type="text" name="AlisFiyat" class="form-control" placeholder="Ürünün Alış Fiyatını Giriniz" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Kdv</label>
+                                <input type="text" name="Kdv" class="form-control" placeholder="Örn : 2,1" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Satış Fiyatı</label>
+                                <input type="text" name="SatisFiyat" class="form-control" placeholder="Ürünün Satış Fiyatını Giriniz" required>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Kaydet</button>
+                            <a href="@Url.Action("Index","Urun")" class="btn btn-default">İptal</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/mask.js"></script>
+    <script src="~/Scripts/urun.js"></script>
+}
